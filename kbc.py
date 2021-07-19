@@ -1,60 +1,88 @@
-def kbc(question,option,solution,answer):
-    print("welcome to kaun banega carorepati")
-    print()
-    i=0
-    amount=100000
-    count=0
-    b=0
-    a=1
-    while i<len(question):
-        print(question[i])
-        j=0
-        k=1
-        while j<len(option[i]):
-            print(option[i][j])
-            j=j+1
-        lifeline=input("do you want lifeline")
-        if lifeline=="yes":
-            print("5050")
-            if count==0:
-                print(answer[b+i])
-                print(answer[b+a])
-                num=int(input("enter the answer"))   
-                if num==solution[i]:
-                    print("your answer is right")
-                    print("you won",amount)
-                else:
-                    print("your answer is wrong")
-                    print("you loose the game")
-                    break
-                count=count+1
-                print()
-            else:
-                print("you had already used the lifeline")
-                e=int(input("enter the answer"))
-                if e==solution[i]:
-                    print("your answer is right")
-                    print("you won",amount)
-                else:
-                    print("your answer is wrong")
-                    print("you loose the game")
-                print()
-        else: 
-            f=int(input("enter the answer"))
-            if f==solution[i]:
-                print("your answer is right")
-                print("you won",amount)
+def que_list():
+    question_list = [
+        "How many continents are there?",             
+        "What is the capital of India?",            
+        "NG mei kaun se course padhaya jaata hai?"
+    ]
+    return question_list
+que = que_list()
+####opetion function
+def opt_list():
+    option_list = [
+        ["Four", "Nine", "Seven", "Eight"],
+        ["Chandigarh", "Bhopal", "Chennai", "Delhi"],
+        ["Software Engineering", "Counseling", "Tourism", "Agriculture"]
+    ]
+    return option_list
+ope = opt_list()
+####answer function
+def answer_list():    
+    ans_list=[3, 4, 1]
+    return ans_list
+answer=answer_list()
+#### lifeline function
+def lifeline():
+    option_list1=[["Nine","Seven"],["Delhi","Chennai"],["Software Engineering","Counseling"]]
+    return option_list1
+life=lifeline()
+####lifeline option list
+def answer_list1():
+    ans_list =[2,1,1]
+    return ans_list
+answer1=answer_list1()         
+sum=0
+i=0
+index=1
+count=1                                                              
+#lifecount=0
+while i<len(que):
+    print("#",index,que[i])
+    j=0
+    index1=1
+    while j<len(ope[i]):
+        print(index1,ope[i][j])
+        index1=index1+1
+        j=j+1
+    if count<=1:
+        lifeline2=input("enter any answer or use lifeline")
+        if lifeline2=="yes":
+            k=0
+            index3=1
+            while k<len(life[i]):
+                print(index3,life[i][k])
+                index3=index3+1
+                k=k+1
+            num=int(input("enter your answer"))
+            if num==answer1[i]:
+                sum=sum+20000
+                print("right answer")
+                print("you win this",sum)                    
             else:
                 print("your answer is wrong")
-                print("you loose the game")
+                print("Game over",sum)
                 break
-            print()
-        amount=amount+100000
-        i=i+1
-        a=a+1
-        b=b+1
-    print("thanks for playing")
-kbc((["1.how many continents are there?","2.what is the capital of india?","3.ng me kon sa course padhaya jata hai?"]),
-([["1.four","2.nine","3.seven","4.eight"],["1.chandigarh","2.bhopal","3.chennai","4.delhi"],["1.software engineering","2.counseling","3.tourism","4.agriculture"]]),([3,4,1]),
-(["3.seven","4.eight","3.chennai","4.delhi","1.software engineer","2.counseling"]))
-
+            count=count+1
+        else:
+                # print("you can't use life line again")             
+            num=int(input("enter your answer"))
+            if num==answer[i]:
+                sum=sum+20000
+                print("right answer")
+                print("you win  this",sum)                        
+            else:
+                print("your answer is wrong")
+                print("game over",sum)
+                break        
+    else:
+        num=int(input("enter your answer"))
+        if num==answer[i]:
+            sum=sum+20000
+            print("right answer")
+            print("you win this",sum)
+        else:
+            print("your answer is wrong")
+            print("Game over",sum)
+            break
+    index=index+1        
+    i=i+1
+	
